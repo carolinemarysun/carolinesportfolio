@@ -1,0 +1,32 @@
+/* Default padding */
+body {
+    padding-top: 48px; /* Default top padding */
+    padding-bottom: 48px; /* Default bottom padding */
+    padding-left: 16px; /* Default left padding */
+    padding-right: 16px; /* Default right padding */
+  }
+  
+  /* Medium screens (≥768px) */
+  @media (min-width: 768px) {
+    body {
+      padding-left: 24px; /* Increased left padding */
+      padding-right: 24px; /* Increased right padding */
+    }
+  }
+  
+  /* Large screens (≥992px) */
+  @media (min-width: 992px) {
+    body {
+      padding-left: 48px; /* Further increased left padding */
+      padding-right: 48px; /* Further increased right padding */
+    }
+  }
+  
+  /* Extra-large screens (≥1200px) */
+  @media (min-width: 1200px) {
+    body {
+      padding-left: 180px; /* Large left padding */
+      padding-right: 180px; /* Large right padding */
+    }
+  }
+  

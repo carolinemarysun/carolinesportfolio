@@ -1,0 +1,43 @@
+.heading {
+    padding-top: 100px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.line {
+    width: 100%;
+    border: none;
+    border-top: 1px solid gray;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.social-links-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    margin: 0 auto; 
+    max-width: 200px;
+}
+
+.social-link-container {
+    margin-bottom: 20px; /* Space between links */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--neutral-500);
+    transition: color 0.3s ease; 
+    cursor: pointer;
+}
+
+.social-link:hover {
+    color: var(--neutral-0);
+}
+
+.social-text {
+    margin-left: 8px;
+}

@@ -1,0 +1,79 @@
+/* Header */
+header h1 {
+    margin-bottom: 20px;
+}
+
+header p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#arrow {
+    padding-top: 180px;
+    padding-bottom: 180px;
+}
+
+header {
+    padding-top: 180px;
+}
+
+#my-work p {
+    color: var(--neutral-500);
+    margin-bottom: 20px;
+}
+
+#my-work h3 {
+    margin-bottom: 30px;
+}
+
+.accordion-button {
+    padding: 0;
+    background-color: var(--neutral-900) !important; /* Make button background transparent */
+    border: none;
+}
+
+/* Ensure the border stays gray even when accordion is expanded */
+.accordion-button:not(.collapsed) {
+    background-color: transparent; /* Keep background transparent */
+    border-color: var(--neutral-800); /* Keep border gray when expanded */
+    box-shadow: none; /* Remove any box shadow */
+}
+
+.accordion-button:hover {
+    transition: border-color 0.5s ease;
+    border-bottom: 1px solid white;
+}
+
+  /* Change chevron icon to white */
+  .accordion-button::after {
+    color: var(--neutral-0); /* Set chevron color to white */
+    filter: brightness(0) invert(1); /* Ensure chevron is white */
+  }
+
+/* Change background color of accordian body */
+.accordion-body {
+    padding-left: 10px;
+    background-color: var(--neutral-900) !important; /* Make body background transparent */
+}
+
+/* Change the text color of the accordion header */
+.accordion-header h3 {
+    color: var(--neutral-0) !important;
+}
+
+/* Change the border color of the header */
+.accordion-header {
+    border-bottom: 1px solid var(--neutral-800);
+}
+
+.accordion-button:focus {
+    outline: none !important; /* Ensure no outline is present */
+    box-shadow: none !important; /* Remove any box shadow */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  

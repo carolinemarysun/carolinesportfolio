@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return (
-        rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.50 && // Trigger when 75% visible
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.82 && // Trigger when __% visible
         rect.bottom > 0 &&
         rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
         rect.right > 0

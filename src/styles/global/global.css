@@ -1,0 +1,72 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 50;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--neutral-900); /* Dark gray background */
+}
+
+/* Global Color Palette */
+:root {
+    --neutral-0: #FFFFFF; /* Pure white */
+    --neutral-500: #808080;
+    --neutral-800: #313131;
+    --neutral-900: #121212; /* Almost black */
+}
+
+/* For text to be highlighted to a gray color */
+.highlight-text {
+    color: var(--neutral-500);
+}
+
+/* For clickable underlined text */
+.underline-text {
+    text-decoration: underline;
+    color: var(--neutral-500);
+    transition: color 0.3s ease;
+  }
+  
+  .underline-text:hover {
+    color: var(--neutral-0);
+  }
+
+.fade-up {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start lower */
+    animation: fade-up 1s forwards; /* Apply the animation */
+}
+
+@keyframes fade-up {
+    to {
+        opacity: 1; /* Fade to fully visible */
+        transform: translateY(0); /* Move to original position */
+    }
+}
+
+/* Define the keyframes for the fadding in from top animation */
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Initial state of the section */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 2s ease-out, transform 1s ease-out; /* Increased duration */
+}
+
+/* Visible state after the animation */
+.fade-in-section.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* End at its original position */
+}
