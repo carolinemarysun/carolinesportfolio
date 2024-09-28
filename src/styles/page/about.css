@@ -1,0 +1,45 @@
+.container {
+    display: flex; /* Use flexbox to align items */
+    align-items: flex-start; /* Align items to the start of the flex container */
+    justify-content: flex-start; /* Align items to the start instead of center */
+    padding-top: 100px;
+    padding-bottom: 100px;
+    flex-wrap: wrap; /* Allow items to wrap to a new line */
+  }
+  
+.carouselContainer {
+  flex: 1; /* Take up 1 part of the flex container */
+  max-width: 500px; /* Maximum width of the carousel */
+  width: 100%; /* Ensure it takes full width available */
+}
+  
+  .textContainer {
+    flex: 1; /* Take up 1 part of the flex container */
+    padding-left: 20px; /* Space between carousel and text */
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox for the text container */
+    flex-direction: column; /* Align children in a column */
+    justify-content: flex-start; /* Align items to the top */
+    margin-top: 0; /* Ensure it starts aligned with the top of the carousel */
+    margin-left: 20px; /* Add some left margin to move it away from the edge */
+  }
+  
+  /* Ensure the carousel images are responsive */
+  .carousel-item img {
+    width: 100%; /* Make images take full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Change flex direction to column for smaller screens */
+        align-items: center; /* Center align items */
+    }
+
+    .textContainer {
+        padding-left: 0; /* Remove left padding when text is below the carousel */
+        margin-left: 0; /* Remove left margin */
+        margin-top: 20px;
+    }
+}

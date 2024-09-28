@@ -23,7 +23,7 @@ const NavList = styled.ul`
     border-radius: 50px;
     backdrop-filter: blur(14px);
     border: 1px solid var(--neutral-800);
-    background: rgba(21, 20, 20, 0.2);
+    background: rgba(21, 20, 20, 0.3);
     transition: border-color 0.3s ease;
 
     &:hover {
@@ -51,8 +51,8 @@ const NavLink = styled(Link)`
 
 // Define the links within the NavBar component
 const links = [
-    { href: '/', label: 'My Work' },
-    { href: '/about-me', label: 'About Me' },
+    { href: '/', label: 'Work' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
 ];
 

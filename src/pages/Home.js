@@ -82,7 +82,7 @@ const Home = () => {
         <div>
             <PageMeta title="Caroline Sun" />
             {/* Hero Section */}
-            <header className="fade-up">
+            <header className={`fade-up hero`}>
                 <h1>Caroline Sun.</h1>
                 <p className="p1">UX Designer and Software Engineer <span className="highlight-text">by day</span>,<br />
                     Powerlifter, Personal Trainer, and Group Fitness Coach <span className="highlight-text">by night</span>.</p>

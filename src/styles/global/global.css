@@ -33,7 +33,9 @@ body {
     color: var(--neutral-0);
   }
 
-.fade-up {
+  .fade-up {
+    margin: 0; /* Reset margins */
+    padding: 0; /* Reset padding */
     opacity: 0; /* Start invisible */
     transform: translateY(20px); /* Start lower */
     animation: fade-up 1s forwards; /* Apply the animation */
