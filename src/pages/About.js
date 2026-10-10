@@ -17,6 +17,13 @@ const About = () => {
         text: 'Mount Fuji, Japan',
       },
     },
+        {
+      src: 'images/about/zion.png',
+      caption: {
+        title: '',
+        text: 'Zion National Park with my dog, Adabelle',
+      },
+    },
     {
       src: 'images/about/coach-headshot.png',
       caption: {
@@ -48,21 +55,43 @@ const About = () => {
         <div className="carouselContainer">
           <Carousel images={images} />
         </div>
-        <div className="textContainer">
-          <h2>👋 I'm Caroline!</h2>
-          <hr className="line" />
-          <p>
-          <p>I am a second generation Korean American born in Hawaii and raised in Washington State.</p>
-          <p>I graduated from the University of Washington with a Bachelor of Science in Environmental Health 
-          and a Minor in Chemistry. My first job was at Amazon as a Environmental Health Specialist. I then attended 
-          a year long program within Amazon called Amazon Technical Academy to become a Software Development Engineer. 
-          I worked as a SDE for the Amazon Care team, Amazon’s virtual healthcare service, for backend development. 
-          After my 4 years at Amazon, I decided to pivot my career into front end development and UI/UX design. 
-          I am currently a UX Designer at DocAI, a healthcare AI start up.</p>
-          <p>Outside of work I enjoy powerlifting, training Brazilian jiu jitsu, teaching fitness classes, and personal training. 
-          I also love traveling abroad and spending time with my miniature schnauzer.</p>
-          </p>
-        </div>
+<div className="textContainer">
+    <h2>👋 I'm Caroline!</h2>
+    <hr className="line" />
+
+    <p>
+        I’m a second-generation Korean American, born in Hawaii and raised in
+        Washington State. I graduated from the University of Washington in 2016 with a
+        Bachelor of Science in Environmental Health and a minor in Chemistry.
+    </p>
+
+    <p>
+        I started my career at Amazon in environmental health before transitioning
+        into software engineering through Amazon Technical Academy. I later worked
+        on the Amazon Care team in backend development for Amazon’s virtual
+        healthcare service.
+    </p>
+
+    <p>
+        After four years at Amazon, I decided to step away from tech and turn my
+        passion for fitness and strength training into my career. I started by
+        coaching group fitness classes before moving into one-on-one personal
+        training. I’ve been lifting since 2014 and have competed in both
+        powerlifting and bodybuilding.
+    </p>
+
+    <p>
+        Today, I coach at Equinox Sports Club in Washington, D.C. My approach
+        emphasizes proper technique, progressive strength development,
+        individualized programming, nutrition guidance, and lifestyle coaching.
+    </p>
+
+    <p>
+        Outside of coaching, I enjoy practicing self-care through mindfulness, 
+        meditation, journaling, and reading, trying new recipes in the kitchen, 
+        traveling abroad, and spending time with my miniature schnauzer.
+    </p>
+</div>
       </div>
       </header>
     </div>

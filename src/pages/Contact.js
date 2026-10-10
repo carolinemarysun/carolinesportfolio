@@ -6,15 +6,10 @@ import '../styles/global/typography.css';
 import '../utils/global.js';
 import PageMeta from '../components/PageMeta.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faInstagram, faDribbble } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const socialLinks = [
-    {
-        href: "https://dribbble.com/carolinemarysun",
-        icon: faDribbble,
-        text: "Dribbble"
-    },
     {
         href: "https://www.linkedin.com/in/carolinemarysun",
         icon: faLinkedin,
