@@ -33,7 +33,7 @@ const DesktopNavWrap = styled.div`
 const NavList = styled.ul`
     list-style: none;
 
-    padding: 15px 15px;
+    padding: 15px;
     margin: 0;
 
     display: flex;
@@ -145,10 +145,6 @@ const MenuLine = styled.span`
     height: 1.5px;
 
     background: white;
-
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
 `;
 
 /* =========================
@@ -290,34 +286,39 @@ const Navbar = () => {
     const handleTrainWithMe = () => {
         closeMenu();
 
+        /*
+         * Already on Home:
+         * scroll directly to the section.
+         */
         if (location.pathname === '/') {
-            document
-                .getElementById('train-with-me')
-                ?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const element = document.getElementById('train-with-me');
+
+            if (!element) return;
+
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
 
             return;
         }
 
-        navigate('/');
-
-        setTimeout(() => {
-            document
-                .getElementById('train-with-me')
-                ?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-        }, 100);
+        /*
+         * From About / Contact:
+         * navigate to Home using the hash.
+         * Home.js handles the final positioning.
+         */
+        navigate('/#train-with-me');
     };
 
     return (
         <Nav>
+
             {/* DESKTOP */}
+
             <DesktopNavWrap>
                 <NavList>
+
                     <NavItem>
                         <StyledLink
                             to="/"
@@ -365,10 +366,13 @@ const Navbar = () => {
                             Contact
                         </StyledLink>
                     </NavItem>
+
                 </NavList>
             </DesktopNavWrap>
 
+
             {/* MOBILE CLOSED BAR */}
+
             <MobileHeader>
                 <MenuButton
                     type="button"
@@ -381,8 +385,11 @@ const Navbar = () => {
                 </MenuButton>
             </MobileHeader>
 
+
             {/* MOBILE FULL SCREEN MENU */}
+
             <MobileMenu $open={menuOpen}>
+
                 <CloseButton
                     type="button"
                     aria-label="Close menu"
@@ -392,6 +399,7 @@ const Navbar = () => {
                 </CloseButton>
 
                 <MobileMenuInner>
+
                     <MobileNavLink
                         to="/"
                         className={
@@ -407,6 +415,7 @@ const Navbar = () => {
                     {location.pathname === '/' && (
                         <ActiveLine />
                     )}
+
 
                     <MobileNavLink
                         to="/about"
@@ -424,12 +433,14 @@ const Navbar = () => {
                         <ActiveLine />
                     )}
 
+
                     <MobileTrainButton
                         type="button"
                         onClick={handleTrainWithMe}
                     >
                         Train With Me
                     </MobileTrainButton>
+
 
                     <MobileNavLink
                         to="/contact"
@@ -446,8 +457,11 @@ const Navbar = () => {
                     {location.pathname === '/contact' && (
                         <ActiveLine />
                     )}
+
                 </MobileMenuInner>
+
             </MobileMenu>
+
         </Nav>
     );
 };

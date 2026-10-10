@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Button from './Button';
 
 const TrainWithMe = () => {
@@ -18,13 +17,13 @@ const TrainWithMe = () => {
 
         try {
             const response = await fetch(
-                "https://formspree.io/f/mvkzrwzy",
+                'https://formspree.io/f/mvkzrwzy',
                 {
-                    method: "POST",
+                    method: 'POST',
                     body: formData,
                     headers: {
-                        Accept: "application/json"
-                    }
+                        Accept: 'application/json',
+                    },
                 }
             );
 
@@ -34,8 +33,10 @@ const TrainWithMe = () => {
             } else {
                 setError(true);
             }
+
         } catch (err) {
             setError(true);
+
         } finally {
             setIsSending(false);
         }
@@ -109,7 +110,8 @@ const TrainWithMe = () => {
                         max-width: 900px;
 
                         display: grid;
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        grid-template-columns:
+                            repeat(2, minmax(0, 1fr));
 
                         gap: 24px;
                     }
@@ -142,7 +144,10 @@ const TrainWithMe = () => {
 
                         padding: 14px 16px;
 
-                        border: 1px solid rgba(255, 255, 255, 0.22);
+                        border:
+                            1px solid
+                            rgba(255, 255, 255, 0.22);
+
                         border-radius: 6px;
 
                         background: transparent;
@@ -154,7 +159,8 @@ const TrainWithMe = () => {
 
                         box-sizing: border-box;
 
-                        transition: border-color 0.25s ease;
+                        transition:
+                            border-color 0.25s ease;
                     }
 
                     .form-group textarea {
@@ -206,7 +212,10 @@ const TrainWithMe = () => {
 
                         padding: 12px 18px;
 
-                        border: 1px solid rgba(255, 255, 255, 0.25);
+                        border:
+                            1px solid
+                            rgba(255, 255, 255, 0.25);
+
                         border-radius: 6px;
 
                         color: white;
@@ -241,7 +250,10 @@ const TrainWithMe = () => {
 
                         padding: 30px;
 
-                        border: 1px solid rgba(255, 255, 255, 0.22);
+                        border:
+                            1px solid
+                            rgba(255, 255, 255, 0.22);
+
                         border-radius: 10px;
 
                         box-sizing: border-box;
@@ -280,14 +292,21 @@ const TrainWithMe = () => {
                         opacity: 0.8;
                     }
 
+
                     @media (max-width: 768px) {
+
                         .train-with-me {
-                            padding: 80px 0;
+                            padding: 140px 0 80px;
                         }
 
                         .train-with-me-container {
                             padding-left: 30px;
                             padding-right: 30px;
+                        }
+
+                        #train-with-me h2 {
+                            font-size: 2rem !important;
+                            line-height: 1.15;
                         }
 
                         .train-with-me-header {
@@ -339,7 +358,9 @@ const TrainWithMe = () => {
                 className="train-with-me"
             >
                 <div className="train-with-me-container">
+
                     <div className="train-with-me-header">
+
                         <p className="train-with-me-label">
                             TRAIN WITH ME
                         </p>
@@ -349,26 +370,39 @@ const TrainWithMe = () => {
                         </h2>
 
                         <p className="train-with-me-intro">
-                            Tell me a little about yourself and what you're looking
-                            for. I offer in-person coaching in Washington, D.C. as
-                            well as online coaching.
+                            Tell me a little about yourself and what
+                            you're looking for. I offer in-person
+                            coaching in Washington, D.C. as well as
+                            online coaching.
                         </p>
+
                     </div>
 
+
                     {submitted ? (
+
                         <div className="form-success">
-                            <h3>Thanks for reaching out!</h3>
+
+                            <h3>
+                                Thanks for reaching out!
+                            </h3>
 
                             <p>
-                                I received your message and will be in touch soon.
+                                I received your message and will be
+                                in touch soon.
                             </p>
+
                         </div>
+
                     ) : (
+
                         <form
                             className="train-with-me-form"
                             onSubmit={handleSubmit}
                         >
+
                             <div className="form-group">
+
                                 <label htmlFor="name">
                                     Name
                                 </label>
@@ -380,9 +414,12 @@ const TrainWithMe = () => {
                                     placeholder="Your name"
                                     required
                                 />
+
                             </div>
 
+
                             <div className="form-group">
+
                                 <label htmlFor="email">
                                     Email
                                 </label>
@@ -394,9 +431,12 @@ const TrainWithMe = () => {
                                     placeholder="you@email.com"
                                     required
                                 />
+
                             </div>
 
+
                             <div className="form-group full-width">
+
                                 <label htmlFor="phone">
                                     Phone Number
                                 </label>
@@ -408,15 +448,20 @@ const TrainWithMe = () => {
                                     placeholder="Your phone number"
                                     required
                                 />
+
                             </div>
 
+
                             <div className="coaching-type">
+
                                 <span className="coaching-type-label">
                                     What are you interested in?
                                 </span>
 
                                 <div className="coaching-options">
+
                                     <div className="coaching-option">
+
                                         <input
                                             id="in-person"
                                             name="coachingType"
@@ -428,9 +473,12 @@ const TrainWithMe = () => {
                                         <label htmlFor="in-person">
                                             In-Person
                                         </label>
+
                                     </div>
 
+
                                     <div className="coaching-option">
+
                                         <input
                                             id="online"
                                             name="coachingType"
@@ -441,9 +489,12 @@ const TrainWithMe = () => {
                                         <label htmlFor="online">
                                             Online
                                         </label>
+
                                     </div>
 
+
                                     <div className="coaching-option">
+
                                         <input
                                             id="not-sure"
                                             name="coachingType"
@@ -454,11 +505,16 @@ const TrainWithMe = () => {
                                         <label htmlFor="not-sure">
                                             Not Sure Yet
                                         </label>
+
                                     </div>
+
                                 </div>
+
                             </div>
 
+
                             <div className="form-group full-width">
+
                                 <label htmlFor="message">
                                     Anything else you'd like me to know?
                                 </label>
@@ -468,12 +524,15 @@ const TrainWithMe = () => {
                                     name="message"
                                     placeholder="Tell me about your goals, training experience, schedule, or anything else you'd like to share."
                                 />
+
                             </div>
+
 
                             {error && (
                                 <p className="form-error">
-                                    Something went wrong. Please try again, or email me
-                                    directly at{' '}
+                                    Something went wrong. Please try
+                                    again, or email me directly at{' '}
+
                                     <a href="mailto:carolinemarysun@gmail.com">
                                         carolinemarysun@gmail.com
                                     </a>
@@ -481,15 +540,20 @@ const TrainWithMe = () => {
                                 </p>
                             )}
 
+
                             <Button
                                 type="submit"
                                 arrow={true}
                                 disabled={isSending}
                             >
-                                {isSending ? 'Sending...' : 'Submit'}
+                                {isSending
+                                    ? 'Sending...'
+                                    : 'Submit'}
                             </Button>
+
                         </form>
                     )}
+
                 </div>
             </section>
         </>

@@ -114,7 +114,7 @@ nav {
         align-items: flex-end;
 
         /* slightly higher text */
-        padding: 0 24px 165px;
+        padding: 0 24px 240px;
 
         background-position: 65% center;
     }
@@ -195,7 +195,7 @@ nav {
 
 @media (max-width: 768px) {
     #about-me-home h2 {
-        font-size: 2rem;
+        font-size: 2.3rem;
         line-height: 1.15;
     }
 }
@@ -477,8 +477,8 @@ nav {
         width: 100%;
         max-width: 100%;
 
-        font-size: 2.5rem;
-        line-height: 1.08;
+        font-size: 2.3rem !important;
+        line-height: 1.15;
     }
 
 
@@ -666,4 +666,11 @@ nav {
 
 #testimonials h2 {
     margin: 0 0 50px;
+}
+
+@media (max-width: 768px) {
+    #testimonials h2 {
+        font-size: 2.8rem !important;
+        line-height: 1.15;
+    }
 }
