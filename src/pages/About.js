@@ -11,35 +11,35 @@ import Carousel from '../components/Carousel.js';
 const About = () => {
   const images = [
     {
-      src: 'images/about/mtfuji.png',
+      src: 'images/about/mtfuji.webp',
       caption: {
         title: '',
         text: 'Mount Fuji, Japan',
       },
     },
         {
-      src: 'images/about/zion.png',
+      src: 'images/about/zion.webp',
       caption: {
         title: '',
         text: 'Zion National Park with my dog, Adabelle',
       },
     },
     {
-      src: 'images/about/coach-headshot.png',
+      src: 'images/about/coach-headshot.webp',
       caption: {
         title: '',
         text: 'Performance Coach at ISI Elite Training',
       },
     },
     {
-      src: 'images/about/deadlift.png',
+      src: 'images/about/deadlift.webp',
       caption: {
         title: '',
         text: 'My first powerlifting meet',
       },
     },
     {
-      src: 'images/about/squat.png',
+      src: 'images/about/squat.webp',
       caption: {
         title: '',
         text: 'My first state USAPL powerlifting meet',

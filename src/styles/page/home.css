@@ -113,7 +113,8 @@ nav {
 
         align-items: flex-end;
 
-        padding: 0 24px 140px;
+        /* slightly higher text */
+        padding: 0 24px 165px;
 
         background-position: 65% center;
     }
@@ -130,6 +131,12 @@ nav {
     .hero-content {
         max-width: 100%;
     }
+
+    /* slightly lower arrow on mobile */
+    #arrow {
+        left: 24px;
+        bottom: 8px;
+    }
 }
 
 
@@ -141,7 +148,7 @@ nav {
     position: absolute;
 
     left: 7%;
-    bottom: 30px;
+    bottom: 20px;
 
     padding: 0;
     margin: 0;
@@ -186,6 +193,13 @@ nav {
     justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+    #about-me-home h2 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+}
+
 
 /* =========================
    MY WORK
@@ -199,6 +213,7 @@ nav {
 #my-work h3 {
     margin-bottom: 30px;
 }
+
 
 /* ========================================
    TRAINING PROCESS
@@ -621,7 +636,6 @@ nav {
 }
 
 
-
 #about-me-home img {
     filter: grayscale(100%) contrast(1.05) brightness(0.95) !important;
 }
@@ -642,6 +656,7 @@ nav {
 #testimonials .testimonials-container {
     width: 100%;
     max-width: none;
+
     margin: 0;
 }
 

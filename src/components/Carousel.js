@@ -1,70 +1,135 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Carousel = ({ images = [] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [fade, setFade] = useState(true); // State for fade effect
+  const [fade, setFade] = useState(true);
+
+  // Tracks whether the carousel is fully visible
+  const [isInView, setIsInView] = useState(false);
+
+  const carouselRef = useRef(null);
 
   const nextSlide = () => {
-    setFade(false); // Start fading out
+    setFade(false);
+
     setTimeout(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-      setFade(true); // Start fading in the new image
-    }, 500); // Wait for the fade-out transition to complete
+      setActiveIndex((prevIndex) =>
+        (prevIndex + 1) % images.length
+      );
+
+      setFade(true);
+    }, 500);
   };
 
   const prevSlide = () => {
-    setFade(false); // Start fading out
+    setFade(false);
+
     setTimeout(() => {
-      setActiveIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-      setFade(true); // Start fading in the new image
-    }, 400); // Wait for the fade-out transition to complete
+      setActiveIndex((prevIndex) =>
+        prevIndex === 0
+          ? images.length - 1
+          : prevIndex - 1
+      );
+
+      setFade(true);
+    }, 400);
   };
 
   const goToSlide = (index) => {
-    setFade(false); // Start fading out
+    setFade(false);
+
     setTimeout(() => {
       setActiveIndex(index);
-      setFade(true); // Start fading in the new image
-    }, 400); // Wait for the fade-out transition to complete
+      setFade(true);
+    }, 400);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 6000); // Change slide every 6 seconds
 
-    return () => clearInterval(interval); // Cleanup on unmount
+  /* =========================
+     CHECK IF CAROUSEL IS ON SCREEN
+  ========================= */
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.intersectionRatio >= 0.9);
+      },
+      {
+        threshold: [0, 0.5, 0.9, 1],
+      }
+    );
+
+    observer.observe(carousel);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
+
+
+  /* =========================
+     AUTO ADVANCE TIMER
+  ========================= */
+
+  useEffect(() => {
+    // Do not start timer until carousel is visible
+    if (!isInView || images.length <= 1) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      nextSlide();
+    }, 6000);
+
+    // Clears and restarts timer whenever:
+    // - image changes
+    // - user clicks next/previous
+    // - carousel enters/leaves the screen
+    return () => clearTimeout(timer);
+
+  }, [activeIndex, isInView, images.length]);
+
 
   if (images.length === 0) {
     return <p>No images to display.</p>;
   }
 
-  // CSS styles as JavaScript objects
+
+  /* =========================
+     STYLES
+  ========================= */
+
   const styles = {
     carouselContainer: {
       width: '100%',
       margin: '0 auto',
       position: 'relative',
     },
+
     carouselItem: {
-      display: activeIndex === 0 ? 'block' : 'none', // Only show active item
       position: 'relative',
       transition: 'opacity 0.5s ease',
-      opacity: fade ? 1 : 0, // Manage opacity for fading effect
+      opacity: fade ? 1 : 0,
     },
+
     img: {
       width: '100%',
       height: '100%',
-      transition: 'opacity 0.5s ease', // Transition for fading effect
+      transition: 'opacity 0.5s ease',
       borderRadius: '20px',
     },
+
     imgHovered: {
       filter: 'brightness(70%)',
     },
+
     caption: {
       display: 'none',
       position: 'absolute',
@@ -74,9 +139,11 @@ const Carousel = ({ images = [] }) => {
       color: 'white',
       padding: '10px',
     },
+
     captionVisible: {
       display: 'block',
     },
+
     controlButton: {
       width: '40px',
       height: '40px',
@@ -84,14 +151,14 @@ const Carousel = ({ images = [] }) => {
       top: '50%',
       transform: 'translateY(-50%)',
       background: 'none',
-      border: 'none',
+      border: '2px solid white',
       borderRadius: '50%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       backdropFilter: 'blur(10px)',
-      border: '2px solid white',
     },
+
     controlIcon: {
       fontSize: '16px',
       color: 'lightgray',
@@ -99,20 +166,25 @@ const Carousel = ({ images = [] }) => {
       width: '20px',
       height: '20px',
     },
+
     controlIconHovered: {
       color: 'white',
     },
+
     prevButton: {
       left: '10px',
     },
+
     nextButton: {
       right: '10px',
     },
+
     indicators: {
       display: 'flex',
       justifyContent: 'center',
       marginTop: '10px',
     },
+
     indicatorDot: {
       width: '30px',
       height: '5px',
@@ -121,36 +193,57 @@ const Carousel = ({ images = [] }) => {
       cursor: 'pointer',
       transition: 'background-color 0.3s',
     },
+
     activeDot: {
       backgroundColor: 'white',
     },
   };
 
+
   return (
-    <div style={styles.carouselContainer}>
+    <div
+      ref={carouselRef}
+      style={styles.carouselContainer}
+    >
       <div className="carousel slide">
+
         {images.map((image, index) => (
           <div
             key={index}
             style={{
               ...styles.carouselItem,
-              display: activeIndex === index ? 'block' : 'none', // Only show active item
+              display:
+                activeIndex === index
+                  ? 'block'
+                  : 'none',
             }}
           >
             <img
               src={image.src}
               alt={image.caption.title}
+              loading="lazy"
+              decoding="async"
               style={{
                 ...styles.img,
-                ...(hoveredIndex === index ? styles.imgHovered : {}),
+                ...(hoveredIndex === index
+                  ? styles.imgHovered
+                  : {}),
               }}
-              onMouseEnter={() => setHoveredIndex(index)} // Set hover state
-              onMouseLeave={() => setHoveredIndex(null)} // Reset hover state
+              onMouseEnter={() =>
+                setHoveredIndex(index)
+              }
+              onMouseLeave={() =>
+                setHoveredIndex(null)
+              }
             />
+
             <div
               style={
                 hoveredIndex === index
-                  ? { ...styles.caption, ...styles.captionVisible }
+                  ? {
+                      ...styles.caption,
+                      ...styles.captionVisible,
+                    }
                   : styles.caption
               }
             >
@@ -160,11 +253,16 @@ const Carousel = ({ images = [] }) => {
           </div>
         ))}
 
-        {/* Next and Previous buttons */}
+
+        {/* Previous Button */}
+
         <button
           className="carousel-control-prev"
           type="button"
-          style={{ ...styles.controlButton, ...styles.prevButton }}
+          style={{
+            ...styles.controlButton,
+            ...styles.prevButton,
+          }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={prevSlide}
@@ -173,16 +271,25 @@ const Carousel = ({ images = [] }) => {
             className="carousel-control-prev-icon"
             style={{
               ...styles.controlIcon,
-              ...(isHovered ? styles.controlIconHovered : {}),
+              ...(isHovered
+                ? styles.controlIconHovered
+                : {}),
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
             }}
-          ></span>
+          />
         </button>
+
+
+        {/* Next Button */}
+
         <button
           className="carousel-control-next"
           type="button"
-          style={{ ...styles.controlButton, ...styles.nextButton }}
+          style={{
+            ...styles.controlButton,
+            ...styles.nextButton,
+          }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={nextSlide}
@@ -191,27 +298,37 @@ const Carousel = ({ images = [] }) => {
             className="carousel-control-next-icon"
             style={{
               ...styles.controlIcon,
-              ...(isHovered ? styles.controlIconHovered : {}),
+              ...(isHovered
+                ? styles.controlIconHovered
+                : {}),
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
             }}
-          ></span>
+          />
         </button>
 
-        {/* Indicators with Rectangular Dots */}
+
+        {/* Indicators */}
+
         <div style={styles.indicators}>
+
           {images.map((_, index) => (
             <div
               key={index}
               onClick={() => goToSlide(index)}
               style={
                 activeIndex === index
-                  ? { ...styles.indicatorDot, ...styles.activeDot }
+                  ? {
+                      ...styles.indicatorDot,
+                      ...styles.activeDot,
+                    }
                   : styles.indicatorDot
               }
-            ></div>
+            />
           ))}
+
         </div>
+
       </div>
     </div>
   );

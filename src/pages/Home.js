@@ -20,28 +20,28 @@ import '../utils/global.js';
 
 const images = [
     {
-        src: '/images/home/me2.png',
+        src: '/images/home/carolinecoach.webp',
         caption: {
             title: '',
             text: 'Coach+ at Equinox Sports Club in DC',
         },
     },
     {
-        src: '/images/about/deadlift.png',
+        src: '/images/about/deadlift.webp',
         caption: {
             title: '',
             text: 'Powerlifting meet',
         },
     },
     {
-        src: '/images/about/squat.png',
+        src: '/images/about/squat.webp',
         caption: {
             title: '',
             text: 'My first state USAPL powerlifting meet',
         },
     },
         {
-        src: '/images/about/isicoach-withclient.png',
+        src: '/images/about/isicoach-withclient.webp',
         caption: {
             title: '',
             text: 'My first state USAPL powerlifting meet',
@@ -225,7 +225,7 @@ const Home = () => {
 <header
     className="hero fade-up"
     style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/images/home/hero-powerlifting.png)`
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/home/hero-powerlifting.webp)`
     }}
 >
     <div className="hero-overlay"></div>
@@ -234,9 +234,9 @@ const Home = () => {
         <h1>Strength by Caroline.</h1>
 
         <p className="p1">
-            Personalized strength training and lifestyle coaching to help you build <span className="highlight-text"> strength and confidence
-            </span>{' '}
-            from within.
+            Personalized strength training and lifestyle coaching to help you build 
+            <span className="highlight-text"> <strong>strength and confidence</strong>
+            </span>{' '}from within.
         </p>
 
         <p className="p1">
