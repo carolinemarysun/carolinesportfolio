@@ -305,7 +305,7 @@ const TrainWithMe = () => {
                         }
 
                         #train-with-me h2 {
-                            font-size: 2rem !important;
+                            font-size: 2.8rem !important;
                             line-height: 1.15;
                         }
 

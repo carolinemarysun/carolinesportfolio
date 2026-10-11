@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Button = ({
     href,
@@ -80,13 +81,13 @@ const Button = ({
             </style>
 
             {href ? (
-                <a
-                    href={href}
+                <Link
+                    to={href}
                     onClick={onClick}
                     className={`site-button ${className}`}
                 >
                     {content}
-                </a>
+                </Link>
             ) : (
                 <button
                     type={type}
